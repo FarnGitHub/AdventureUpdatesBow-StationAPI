@@ -1,6 +1,6 @@
 package farn.adventure_update_bow.mixin.bow.common;
 
-import farn.adventure_update_bow.ArrowEntityCustomSpeed;
+import farn.adventure_update_bow.impl.ArrowEntityCustomSpeed;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;

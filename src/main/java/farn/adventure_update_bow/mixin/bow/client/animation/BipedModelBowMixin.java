@@ -1,6 +1,6 @@
 package farn.adventure_update_bow.mixin.bow.client.animation;
 
-import farn.adventure_update_bow.ModernBow;
+import farn.adventure_update_bow.AdventureUpdateBow;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.EntityModel;
@@ -25,7 +25,7 @@ public abstract class BipedModelBowMixin extends EntityModel {
 
     @Inject(method="setAngles", at = @At("TAIL"))
     public void setAngles(float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch, float scale, CallbackInfo ci) {
-        if(modelflag_getModelFlag(ModernBow.bow_rotate, false)) {
+        if(modelflag_getModelFlag(AdventureUpdateBow.bow_rotate, false)) {
             float f7 = 0.0F;
             float f8 = 0.0F;
             this.rightArm.roll = 0.0F;

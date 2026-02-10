@@ -8,12 +8,12 @@
     "farnfarn02"
   ],
   "license": "MIT",
-  "icon": "assets/beta18_bow/icon.png",
+  "icon": "assets/adventure_update_bow/icon.png",
   "accessWidener": "beta18_bow.classTweaker",
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
-      "farn.adventure_update_bow.ModernBow"
+      "farn.adventure_update_bow.AdventureUpdateBow"
     ]
   },
   "mixins": [

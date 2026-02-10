@@ -1,6 +1,6 @@
 package farn.adventure_update_bow.mixin.bow.client.animation;
 
-import farn.adventure_update_bow.ModernBow;
+import farn.adventure_update_bow.AdventureUpdateBow;
 import farn.adventure_update_bow.action.BowAction;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
@@ -29,8 +29,8 @@ public class PlayerBowHoldingMixin {
                 player.farnutil_isUsingItem() &&
                 player.farnutil_getActionType(player.farnutil_getUsingItem())
                         instanceof BowAction;
-        this.armor1.modelflag_setModelFlag(ModernBow.bow_rotate, bool);
-        this.armor2.modelflag_setModelFlag(ModernBow.bow_rotate, bool);
-        this.bipedModel.modelflag_setModelFlag(ModernBow.bow_rotate, bool);
+        this.armor1.modelflag_setModelFlag(AdventureUpdateBow.bow_rotate, bool);
+        this.armor2.modelflag_setModelFlag(AdventureUpdateBow.bow_rotate, bool);
+        this.bipedModel.modelflag_setModelFlag(AdventureUpdateBow.bow_rotate, bool);
     }
 }

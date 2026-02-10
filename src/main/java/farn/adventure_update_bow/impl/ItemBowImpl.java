@@ -1,8 +1,7 @@
 package farn.adventure_update_bow.impl;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import farn.adventure_update_bow.ArrowEntityCustomSpeed;
-import farn.adventure_update_bow.ModernBow;
+import farn.adventure_update_bow.AdventureUpdateBow;
 import farn.farn_util.api.item_usage.ActionType;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -48,7 +47,7 @@ public class ItemBowImpl {
     }
 
     public static ActionType getActionType() {
-        return ModernBow.bowAction;
+        return AdventureUpdateBow.bowAction;
     }
 
     public static int getMaxDuration(ItemStack itemStack1) {
@@ -79,8 +78,8 @@ public class ItemBowImpl {
     public static int getPullingIcon(ItemStack itemStack, PlayerEntity player) {
         if(player.farnutil_isUsingItem() && itemStack.getItem() instanceof BowItem itemBow) {
             int durationEs = itemBow.farnutil_getMaxDuration(itemStack) - player.farnutil_getUsingDuration();
-            return durationEs >= 18 ? ModernBow.bowPulling[2] :
-                    (durationEs > 13 ? ModernBow.bowPulling[1] : ModernBow.bowPulling[0]);
+            return durationEs >= 18 ? AdventureUpdateBow.bowPulling[2] :
+                    (durationEs > 13 ? AdventureUpdateBow.bowPulling[1] : AdventureUpdateBow.bowPulling[0]);
         }
         return -1;
     }

@@ -11,7 +11,7 @@ import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 
-public class ModernBow {
+public class AdventureUpdateBow {
     @Entrypoint.Namespace
     public static Namespace NAMESPACE;
 
