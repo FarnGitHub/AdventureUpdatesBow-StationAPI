@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "adventure_update_bow",
+  "version": "${version}",
+  "name": "Adventure Update Bow",
+  "description": "Change the Minecraft's bow to match with how it behave in adventure update",
+  "authors": [
+    "farnfarn02"
+  ],
+  "license": "MIT",
+  "icon": "assets/beta18_bow/icon.png",
+  "accessWidener": "beta18_bow.classTweaker",
+  "environment": "*",
+  "entrypoints": {
+    "stationapi:event_bus": [
+      "farn.adventure_update_bow.ModernBow"
+    ]
+  },
+  "mixins": [
+    "beta18_bow.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "1.0.0-beta.7.3",
+    "stationapi": "*"
+  }
+}

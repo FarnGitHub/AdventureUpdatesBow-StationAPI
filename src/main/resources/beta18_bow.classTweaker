@@ -1,0 +1,5 @@
+classTweaker v1 named
+
+accessible field net/minecraft/client/Minecraft INSTANCE Lnet/minecraft/client/Minecraft;
+accessible method net/minecraft/entity/player/PlayerInventory indexOf (I)I
+
