@@ -5,10 +5,18 @@ import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 public class MixinPlugin implements IMixinConfigPlugin {
+    static List<String> unitweakList = new ArrayList<>();
+
+    static {
+        unitweakList.add("farn.adventure_update_bow.mixin.bow.client.bow_renderer_fix.ItemBowHandHeldMixin");
+        unitweakList.add("farn.adventure_update_bow.mixin.bow.client.bow_renderer_fix.PlayerRendererBowMixin");
+    }
+
     @Override
     public void onLoad(String mixinPackage) {
 
@@ -21,7 +29,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if(mixinClassName.equals("farn.beta18_bow.mixin.bow.unitweak_compat.ItemBowHandHeldMixin") || mixinClassName.equals("farn.beta18_bow.mixin.bow.unitweak_compat.PlayerRendererBowMixin")) {
+        if(unitweakList.contains(mixinClassName)) {
             return !FabricLoader.getInstance().isModLoaded("unitweaks");
         }
         return true;

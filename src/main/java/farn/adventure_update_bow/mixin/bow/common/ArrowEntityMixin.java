@@ -9,6 +9,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 @Mixin(ArrowEntity.class)
 public abstract class ArrowEntityMixin extends Entity implements ArrowEntityCustomSpeed {
@@ -40,6 +42,12 @@ public abstract class ArrowEntityMixin extends Entity implements ArrowEntityCust
         this.velocityZ = (double)(MathHelper.cos(this.yaw / 180.0F * 3.1415927F) * MathHelper.cos(this.pitch / 180.0F * 3.1415927F));
         this.velocityY = (double)(-MathHelper.sin(this.pitch / 180.0F * 3.1415927F));
         this.setVelocity(this.velocityX, this.velocityY, this.velocityZ, speed * 1.5F, 1.0F);
+    }
+
+    @ModifyArg(method="tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;damage(Lnet/minecraft/entity/Entity;I)Z"), index = 1)
+    public int modifyDamage(int amount) {
+        double distance = MathHelper.sqrt(this.velocityX * this.velocityX + this.velocityY * this.velocityY + this.velocityZ * this.velocityZ);
+        return (int)Math.ceil(distance * 2.0D);
     }
 
 }

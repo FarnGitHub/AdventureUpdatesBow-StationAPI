@@ -29,8 +29,8 @@ public class ItemBowImpl {
             float speedMulti = (float) durationI / 20.0F;
             speedMulti = (speedMulti * speedMulti + speedMulti * 2.0F) / 3.0F;
 
-            if (speedMulti > 1.5F) {
-                speedMulti = 1.5F;
+            if (speedMulti > 1.0F) {
+                speedMulti = 1.0F;
             } else if(speedMulti < 0.2D) {
                 speedMulti = 0.2F;
             }
