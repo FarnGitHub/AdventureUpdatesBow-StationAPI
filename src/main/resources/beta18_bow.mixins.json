@@ -17,6 +17,7 @@
     "bow.client.animation.PlayerBowHoldingMixin"
   ],
   "plugin": "farn.adventure_update_bow.mixin.bow.MixinPlugin",
+  "mixinextras": {"minVersion": "0.5.0"},
   "injectors": {
     "defaultRequire": 1
   }

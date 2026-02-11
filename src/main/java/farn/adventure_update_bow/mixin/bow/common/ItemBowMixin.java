@@ -44,15 +44,15 @@ public abstract class ItemBowMixin extends Item{
 
     @Override
     public int farnutil_getMaxDuration(ItemStack itemStack1) {
-        return ItemBowImpl.getMaxDuration(itemStack1);
+        return ItemBowImpl.getMaxDuration();
     }
 
     @Override
     public float farnutil_getFovMultiplier(PlayerEntity entity, ItemStack stack, int duration) {
-        return ItemBowImpl.getFovMultiplier(entity, stack, duration);
+        return ItemBowImpl.getFovMultiplier(duration);
     }
 
     public float farnutil_getSpeedMultiplier(PlayerEntity entity, ItemStack stack, int duration) {
-        return ItemBowImpl.getSpeedMultiplier(entity, stack, duration);
+        return ItemBowImpl.getSpeedMultiplier();
     }
 }

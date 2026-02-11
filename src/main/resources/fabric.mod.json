@@ -14,6 +14,9 @@
   "entrypoints": {
     "stationapi:event_bus": [
       "farn.adventure_update_bow.AdventureUpdateBow"
+    ],
+    "gcapi3": [
+      "farn.adventure_update_bow.mod.AUBGlassConfig"
     ]
   },
   "mixins": [

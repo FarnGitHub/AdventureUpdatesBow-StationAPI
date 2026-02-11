@@ -11,32 +11,32 @@ import net.minecraft.item.BowItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.util.math.MathHelper;
 
 import java.util.Random;
 
 public class ItemBowImpl {
 
     public static ItemStack use(ItemStack stack, World world, PlayerEntity user, Operation<ItemStack> original) {
-        if (user.inventory.indexOf(Item.ARROW.id) > -1) {
-            user.farnutil_setUsingItemMaxDuration(stack, getMaxDuration(stack));
+        if(AdventureUpdateBow.isEnabled()) {
+            if (user.inventory.indexOf(Item.ARROW.id) > -1) {
+                user.farnutil_setUsingItemMaxDuration(stack, getMaxDuration());
+            }
+            return stack;
+        } else {
+            return original.call(stack, world, user);
         }
-        return stack;
     }
 
     public static void stopUsingItem(ItemStack stack, World world, PlayerEntity player, int duration, Random random) {
         if(player.inventory.indexOf(Item.ARROW.id) > -1) {
-            int durationI = getMaxDuration(stack) - duration;
-            float speedMulti = (float) durationI / 20.0F;
+            float speedMulti = (getMaxDuration() - duration) / 20.0F;
             speedMulti = (speedMulti * speedMulti + speedMulti * 2.0F) / 3.0F;
-
-            if (speedMulti > 1.0F) {
-                speedMulti = 1.0F;
-            } else if(speedMulti < 0.2D) {
-                speedMulti = 0.2F;
-            }
-
+            speedMulti = MathHelper.clamp(speedMulti, 0.1F, 1.0F);
             ArrowEntity entityArrow7 = new ArrowEntity(world);
-            ((ArrowEntityCustomSpeed)entityArrow7).b18Bow_setVelo(entityArrow7, player, speedMulti);
+            ArrowEntityCustomSpeed customInvoke = ((ArrowEntityCustomSpeed)entityArrow7);
+            customInvoke.b18bow_setCrit(speedMulti >= 1.0F);
+            customInvoke.b18Bow_setVelo(entityArrow7, player, speedMulti * 2.0F);
             stack.damage(1, player);
             world.playSound(player, "random.bow", 1.0F, 1.0F / (random.nextFloat() * 0.4F + 1.2F) + speedMulti * 0.5F);
             player.inventory.remove(Item.ARROW.id);
@@ -50,13 +50,13 @@ public class ItemBowImpl {
         return AdventureUpdateBow.bowAction;
     }
 
-    public static int getMaxDuration(ItemStack itemStack1) {
+    public static int getMaxDuration() {
         return 72000;
     }
 
-    public static float getFovMultiplier(PlayerEntity entity, ItemStack stack, int duration) {
+    public static float getFovMultiplier(int duration) {
         float baseMt = 1.0F;
-        float duationX = (float)(getMaxDuration(stack) - duration) / 20.0F;
+        float duationX = (float)(getMaxDuration() - duration) / 20.0F;
         if(duationX > 1.0F) {
             duationX = 1.0F;
         } else {
@@ -66,7 +66,7 @@ public class ItemBowImpl {
         return baseMt;
     }
 
-    public static float getSpeedMultiplier(PlayerEntity entity, ItemStack stack, int duration) {
+    public static float getSpeedMultiplier() {
         return 0.2F;
     }
 

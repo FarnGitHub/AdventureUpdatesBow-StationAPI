@@ -5,5 +5,7 @@ import net.minecraft.entity.projectile.ArrowEntity;
 
 public interface ArrowEntityCustomSpeed {
 
-    public void b18Bow_setVelo(ArrowEntity arrowEntity, LivingEntity entity, float speed);
+    void b18Bow_setVelo(ArrowEntity arrowEntity, LivingEntity entity, float speed);
+
+    void b18bow_setCrit(boolean flag);
 }
