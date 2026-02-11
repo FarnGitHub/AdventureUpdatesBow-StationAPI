@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(value = BowItem.class, priority = 1200)
-public class ItemBowHandHeldMixin extends Item {
+public abstract class ItemBowHandHeldMixin extends Item {
 
     public ItemBowHandHeldMixin(int id) {
         super(id);

@@ -33,4 +33,11 @@ public class PlayerBowHoldingMixin {
         this.armor2.modelflag_setModelFlag(AdventureUpdateBow.bow_rotate, bool);
         this.bipedModel.modelflag_setModelFlag(AdventureUpdateBow.bow_rotate, bool);
     }
+
+    @Inject(method="render(Lnet/minecraft/entity/player/PlayerEntity;DDDFF)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/LivingEntityRenderer;render(Lnet/minecraft/entity/LivingEntity;DDDFF)V", shift = At.Shift.AFTER))
+    public void renderBowModel2(PlayerEntity player, double e, double f, double g, float h, float par6, CallbackInfo ci) {
+        this.armor1.modelflag_setModelFlag(AdventureUpdateBow.bow_rotate, false);
+        this.armor2.modelflag_setModelFlag(AdventureUpdateBow.bow_rotate, false);
+        this.bipedModel.modelflag_setModelFlag(AdventureUpdateBow.bow_rotate, false);
+    }
 }
