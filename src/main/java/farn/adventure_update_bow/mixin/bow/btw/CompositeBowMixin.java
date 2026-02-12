@@ -25,7 +25,7 @@ public abstract class CompositeBowMixin extends TemplateItem {
 
     @WrapMethod(method="use")
     public ItemStack use(ItemStack stack, World world, PlayerEntity user, Operation<ItemStack> original) {
-        return ItemBowImpl.use(stack, world, user, original);
+        return CompositeBowImpl.use(stack, world, user, original);
     }
 
     @Inject(method="<init>", at = @At("TAIL"))

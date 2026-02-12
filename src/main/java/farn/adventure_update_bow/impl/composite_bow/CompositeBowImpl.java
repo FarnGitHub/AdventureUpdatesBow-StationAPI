@@ -1,5 +1,6 @@
 package farn.adventure_update_bow.impl.composite_bow;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import farn.adventure_update_bow.AdventureUpdateBow;
 import farn.adventure_update_bow.action.CompositeBowAction;
 import farn.adventure_update_bow.impl.vanila_bow.ArrowEntityCustomSpeed;
@@ -66,5 +67,16 @@ public class CompositeBowImpl {
                     (durationEs > 13 ? AdventureUpdateBow.bowCompositePulling[1] : AdventureUpdateBow.bowCompositePulling[0]);
         }
         return -1;
+    }
+
+    public static ItemStack use(ItemStack stack, World world, PlayerEntity user, Operation<ItemStack> original) {
+        if(AdventureUpdateBow.isEnabled()) {
+            if (user.inventory.indexOf(Item.ARROW.id) > -1 || user.inventory.indexOf(ItemListener.broadHeadArrow.id) > -1) {
+                user.farnutil_setUsingItemMaxDuration(stack, ItemListener.compositeBow.farnutil_getMaxDuration(stack));
+            }
+            return stack;
+        } else {
+            return original.call(stack, world, user);
+        }
     }
 }
