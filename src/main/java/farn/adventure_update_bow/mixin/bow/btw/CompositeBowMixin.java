@@ -1,29 +1,26 @@
-package farn.adventure_update_bow.mixin.bow.common;
+package farn.adventure_update_bow.mixin.bow.btw;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import farn.adventure_update_bow.impl.composite_bow.CompositeBowImpl;
 import farn.adventure_update_bow.impl.vanila_bow.ItemBowImpl;
 import farn.farn_util.api.item_usage.ActionType;
+import net.kozibrodka.wolves.items.CompositeBowItem;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BowItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.modificationstation.stationapi.api.template.item.TemplateItem;
+import net.modificationstation.stationapi.api.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = BowItem.class, priority = 900)
-public abstract class ItemBowMixin extends Item{
+@Mixin(value = CompositeBowItem.class, priority = 1100)
+public abstract class CompositeBowMixin extends TemplateItem {
 
-    public ItemBowMixin(int id) {
-        super(id);
-    }
-
-    @Inject(method="<init>", at = @At("TAIL"))
-    private void init(CallbackInfo ci){
-        ItemBowImpl.setDurability(this);
+    public CompositeBowMixin(Identifier identifier) {
+        super(identifier);
     }
 
     @WrapMethod(method="use")
@@ -31,15 +28,20 @@ public abstract class ItemBowMixin extends Item{
         return ItemBowImpl.use(stack, world, user, original);
     }
 
+    @Inject(method="<init>", at = @At("TAIL"))
+    private void init(CallbackInfo ci){
+        CompositeBowImpl.setDurability(this);
+    }
+
     @Override
     public void farnutil_stopUsingItem(ItemStack stack, World world, PlayerEntity player, int duration) {
         super.farnutil_stopUsingItem(stack, world, player, duration);
-        ItemBowImpl.stopUsingItem(stack, world, player, duration, random);
+        CompositeBowImpl.stopUsingItem(stack, world, player, duration, random);
     }
 
     @Override
     public ActionType farnutil_getActionType() {
-        return ItemBowImpl.getActionType();
+        return CompositeBowImpl.action;
     }
 
     @Override

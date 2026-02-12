@@ -1,4 +1,4 @@
-package farn.adventure_update_bow.impl;
+package farn.adventure_update_bow.impl.vanila_bow;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ArrowEntity;

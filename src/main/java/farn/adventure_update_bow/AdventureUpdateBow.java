@@ -20,6 +20,9 @@ public class AdventureUpdateBow {
     @Environment(EnvType.CLIENT)
     public static int[] bowPulling = new int[3];
 
+    @Environment(EnvType.CLIENT)
+    public static int[] bowCompositePulling = new int[3];
+
     public static boolean GCAPI = false;
 
     public static Identifier bow_rotate;
@@ -31,6 +34,7 @@ public class AdventureUpdateBow {
     public void registerTextures(TextureRegisterEvent event) {
         for(int pull = 0; pull < bowPulling.length; ++pull) {
             bowPulling[pull] = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/bow_pull_" + pull)).index;
+            bowCompositePulling[pull] = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/btw/bow_composite_pull_" + pull)).index;
         }
     }
 

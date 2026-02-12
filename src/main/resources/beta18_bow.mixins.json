@@ -5,7 +5,9 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "bow.common.ItemBowMixin",
-    "bow.common.ArrowEntityMixin"
+    "bow.common.ArrowEntityMixin",
+    "bow.btw.BroadHeadArrowEntityMixin",
+    "bow.btw.CompositeBowMixin"
   ],
   "server": [
   ],

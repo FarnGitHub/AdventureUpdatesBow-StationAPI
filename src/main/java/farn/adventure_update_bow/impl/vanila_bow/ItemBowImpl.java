@@ -1,4 +1,4 @@
-package farn.adventure_update_bow.impl;
+package farn.adventure_update_bow.impl.vanila_bow;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import farn.adventure_update_bow.AdventureUpdateBow;
@@ -7,7 +7,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
-import net.minecraft.item.BowItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -76,8 +75,8 @@ public class ItemBowImpl {
 
     @Environment(EnvType.CLIENT)
     public static int getPullingIcon(ItemStack itemStack, PlayerEntity player) {
-        if(player.farnutil_isUsingItem() && itemStack.getItem() instanceof BowItem itemBow) {
-            int durationEs = itemBow.farnutil_getMaxDuration(itemStack) - player.farnutil_getUsingDuration();
+        if(player.farnutil_isUsingItem() && itemStack.itemId == Item.BOW.id) {
+            int durationEs = Item.BOW.farnutil_getMaxDuration(itemStack) - player.farnutil_getUsingDuration();
             return durationEs >= 18 ? AdventureUpdateBow.bowPulling[2] :
                     (durationEs > 13 ? AdventureUpdateBow.bowPulling[1] : AdventureUpdateBow.bowPulling[0]);
         }

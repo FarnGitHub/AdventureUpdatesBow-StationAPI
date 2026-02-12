@@ -32,6 +32,9 @@ public class MixinPlugin implements IMixinConfigPlugin {
         if(unitweakList.contains(mixinClassName)) {
             return !FabricLoader.getInstance().isModLoaded("unitweaks");
         }
+        if(mixinClassName.startsWith("farn.adventure_update_bow.mixin.bow.btw")) {
+            return FabricLoader.getInstance().isModLoaded("wolves");
+        }
         return true;
     }
 
