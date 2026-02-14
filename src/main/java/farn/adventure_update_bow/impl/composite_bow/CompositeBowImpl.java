@@ -2,7 +2,6 @@ package farn.adventure_update_bow.impl.composite_bow;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import farn.adventure_update_bow.AdventureUpdateBow;
-import farn.adventure_update_bow.action.CompositeBowAction;
 import farn.adventure_update_bow.impl.vanila_bow.ArrowEntityCustomSpeed;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -20,7 +19,6 @@ import net.modificationstation.stationapi.api.util.math.MathHelper;
 import java.util.Random;
 
 public class CompositeBowImpl {
-    public static final CompositeBowAction action = new CompositeBowAction();
 
     public static void setDurability(Item item) {
          item.setMaxDamage(768);

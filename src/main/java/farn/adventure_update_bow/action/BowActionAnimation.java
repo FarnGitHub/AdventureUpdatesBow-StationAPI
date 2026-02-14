@@ -1,6 +1,6 @@
 package farn.adventure_update_bow.action;
 
-import farn.farn_util.api.item_usage.ActionTypeAnimation;
+import farn.farn_util.api.item_usage.ActionAnimator;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.player.ClientPlayerEntity;
@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
 import org.lwjgl.opengl.GL11;
 
-public class BowActionAnimation extends ActionTypeAnimation {
+public class BowActionAnimation extends ActionAnimator {
 
     @Environment(EnvType.CLIENT)
     public void applyFirstPersonItemRotation(float tick, float avgHeight, ClientPlayerEntity plr, ItemStack heldStack) {

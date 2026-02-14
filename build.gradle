@@ -1,6 +1,6 @@
 plugins {
     id 'maven-publish'
-    id 'fabric-loom' version '1.14.9'
+    id 'fabric-loom' version '1.15.3'
     id 'babric-loom-extension' version '1.14.1'
     id "com.modrinth.minotaur" version "2.+"
 }
@@ -171,8 +171,9 @@ dependencies {
         transitive = false
     }
 
-    modImplementation("maven.modrinth:farnutil:3.1-b1.7.3")
+    modImplementation("maven.modrinth:farnutil:3.2-babric2-b1.7.3")
     modImplementation("maven.modrinth:better-than-wolves-legacy-unofficial:1.5.0-b1.7.3")
+    modImplementation("maven.modrinth:aether-stapi")
 }
 
 processResources {

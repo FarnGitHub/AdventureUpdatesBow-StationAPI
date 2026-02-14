@@ -3,7 +3,7 @@ package farn.adventure_update_bow.mixin.bow.common;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import farn.adventure_update_bow.impl.vanila_bow.ItemBowImpl;
-import farn.farn_util.api.item_usage.ActionType;
+import farn.farn_util.api.item_usage.ActionHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.Item;
@@ -38,7 +38,7 @@ public abstract class ItemBowMixin extends Item{
     }
 
     @Override
-    public ActionType farnutil_getActionType() {
+    public ActionHandler farnutil_getActionType() {
         return ItemBowImpl.getActionType();
     }
 

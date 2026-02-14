@@ -2,7 +2,7 @@ package farn.adventure_update_bow.impl.vanila_bow;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import farn.adventure_update_bow.AdventureUpdateBow;
-import farn.farn_util.api.item_usage.ActionType;
+import farn.farn_util.api.item_usage.ActionHandler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.player.PlayerEntity;
@@ -45,7 +45,7 @@ public class ItemBowImpl {
         }
     }
 
-    public static ActionType getActionType() {
+    public static ActionHandler getActionType() {
         return AdventureUpdateBow.bowAction;
     }
 

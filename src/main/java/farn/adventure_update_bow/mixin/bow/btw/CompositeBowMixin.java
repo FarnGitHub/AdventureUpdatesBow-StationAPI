@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import farn.adventure_update_bow.impl.composite_bow.CompositeBowImpl;
 import farn.adventure_update_bow.impl.vanila_bow.ItemBowImpl;
-import farn.farn_util.api.item_usage.ActionType;
+import farn.farn_util.api.item_usage.ActionHandler;
 import net.kozibrodka.wolves.items.CompositeBowItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -40,8 +40,8 @@ public abstract class CompositeBowMixin extends TemplateItem {
     }
 
     @Override
-    public ActionType farnutil_getActionType() {
-        return CompositeBowImpl.action;
+    public ActionHandler farnutil_getActionType() {
+        return ItemBowImpl.getActionType();
     }
 
     @Override
