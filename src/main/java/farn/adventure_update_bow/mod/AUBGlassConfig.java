@@ -10,8 +10,8 @@ public class AUBGlassConfig {
 
     public static class InstanceConfig {
 
-        @ConfigEntry(name = "Enabled", description = "Return to vanilla behavior if disabled", multiplayerSynced = true)
-        public Boolean enabled = true;
+        @ConfigEntry(name = "Durability", description = "Add durability to the bow", multiplayerSynced = true, requiresRestart = true)
+        public Boolean durability = true;
 
         @ConfigEntry(name = "Crit Damage", description = "Allowed for higher randomized damage when fully charged", multiplayerSynced = true)
         public Boolean crit = false;

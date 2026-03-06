@@ -8,7 +8,7 @@ import net.fabricmc.api.Environment;
 
 public class BowAction extends ActionHandler {
     public BowAction() {
-        super(AdventureUpdateBow.bow_action);
+        super(AdventureUpdateBow.NAMESPACE.id("bow_action"));
     }
 
     @Environment(EnvType.CLIENT)

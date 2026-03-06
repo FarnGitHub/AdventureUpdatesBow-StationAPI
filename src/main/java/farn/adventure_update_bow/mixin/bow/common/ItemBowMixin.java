@@ -23,7 +23,7 @@ public abstract class ItemBowMixin extends Item{
 
     @Inject(method="<init>", at = @At("TAIL"))
     private void init(CallbackInfo ci){
-        ItemBowImpl.setDurability(this);
+         ItemBowImpl.init(this);
     }
 
     @WrapMethod(method="use")
@@ -43,7 +43,7 @@ public abstract class ItemBowMixin extends Item{
     }
 
     @Override
-    public int farnutil_getMaxDuration(ItemStack itemStack1) {
+    public int farnutil_getMaxDuration(ItemStack stack) {
         return ItemBowImpl.getMaxDuration();
     }
 

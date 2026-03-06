@@ -5,9 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "bow.common.ItemBowMixin",
-    "bow.common.ArrowEntityMixin",
-    "bow.btw.BroadHeadArrowEntityMixin",
-    "bow.btw.CompositeBowMixin"
+    "bow.common.ArrowEntityMixin"
   ],
   "server": [
   ],
@@ -15,8 +13,7 @@
     "bow.client.bow_renderer_fix.ItemBowHandHeldMixin",
     "bow.client.bow_renderer_fix.PlayerRendererBowMixin",
     "bow.client.PlayerArrowIconMixin",
-    "bow.client.animation.BipedModelBowMixin",
-    "bow.client.animation.PlayerBowHoldingMixin"
+    "bow.client.bow_renderer_fix.ItemSubMixin"
   ],
   "plugin": "farn.adventure_update_bow.mixin.bow.MixinPlugin",
   "mixinextras": {"minVersion": "0.5.0"},

@@ -171,9 +171,7 @@ dependencies {
         transitive = false
     }
 
-    modImplementation("maven.modrinth:farnutil:3.2-babric2-b1.7.3")
-    modImplementation("maven.modrinth:better-than-wolves-legacy-unofficial:1.5.0-b1.7.3")
-    modImplementation("maven.modrinth:aether-stapi")
+    modImplementation("maven.modrinth:farnutil:3.3-babric-b1.7.3")
 }
 
 processResources {
