@@ -9,7 +9,7 @@
   ],
   "license": "MIT",
   "icon": "assets/adventure_update_bow/icon.png",
-  "accessWidener": "beta18_bow.classTweaker",
+  "accessWidener": "adventure_update_bow.classTweaker",
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
@@ -20,7 +20,7 @@
     ]
   },
   "mixins": [
-    "beta18_bow.mixins.json"
+    "adventure_update_bow.mixins.json"
   ],
   "depends": {
     "minecraft": "1.0.0-beta.7.3",

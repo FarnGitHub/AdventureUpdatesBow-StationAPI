@@ -30,14 +30,16 @@ public class ItemBowImpl {
             float speed = (getMaxDuration() - duration) / 20.0F;
             speed = (speed * speed + speed * 2.0F) / 3.0F;
             speed = Math.max(Math.min(speed, 1.0F), 0.1F);
-            ArrowEntity arrow = createArrow(world, user, speed * 2, speed >= 1.0F);
             stack.damage(1, user);
             world.playSound(user, "adventure_update_bow:bow.shoot",
                     1.0F,
                     1.0F / (random.nextFloat() * 0.4F + 1.2F) + speed * 0.5F);
             removeArrow(user);
             if (!world.isRemote) {
-                world.spawnEntity(arrow);
+                world.spawnEntity(createArrow(
+                        world, user,
+                        speed * 2,
+                        speed >= 1.0F));
             }
         }
     }
@@ -95,22 +97,21 @@ public class ItemBowImpl {
         arrow.velocityZ = MathHelper.cos(arrow.yaw / 180.0F * 3.1415927F) * MathHelper.cos(arrow.pitch / 180.0F * 3.1415927F);
         arrow.velocityY = -MathHelper.sin(arrow.pitch / 180.0F * 3.1415927F);
         arrow.setVelocity(arrow.velocityX, arrow.velocityY, arrow.velocityZ, 1.5F * speed, 1.0F);
-        ((ArrowEntityCustomSpeed)arrow).b18bow_setCrit(crit);
+        arrow.aub_setCrit(crit);
         return arrow;
     }
 
-    public static boolean hasArrow(PlayerEntity player) {
+    public static int getArrow(PlayerEntity player) {
         for(int id : ConsumableArrow.consumables)
-            if(player.inventory.indexOf(id) >= 0) return true;
-        return false;
+            if(player.inventory.indexOf(id) >= 0) return id;
+        return -1;
+    }
+
+    public static boolean hasArrow(PlayerEntity player) {
+        return getArrow(player) >= 0;
     }
 
     public static void removeArrow(PlayerEntity player) {
-        for(int id : ConsumableArrow.consumables) {
-            if(player.inventory.indexOf(id) >= 0) {
-                player.inventory.remove(id);
-                return;
-            }
-        }
+        player.inventory.remove(getArrow(player));
     }
 }

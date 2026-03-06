@@ -5,7 +5,7 @@ import com.llamalad7.mixinextras.expression.Expression;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import farn.adventure_update_bow.AdventureUpdateBow;
-import farn.adventure_update_bow.impl.vanila_bow.ArrowEntityCustomSpeed;
+import farn.adventure_update_bow.impl.vanila_bow.ArrowEntityAUB;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.util.math.MathHelper;
@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
 
 @Mixin(ArrowEntity.class)
-public abstract class ArrowEntityMixin extends Entity implements ArrowEntityCustomSpeed {
+public abstract class ArrowEntityMixin extends Entity implements ArrowEntityAUB {
 
     @Unique
     private boolean crit = false;
@@ -28,7 +28,7 @@ public abstract class ArrowEntityMixin extends Entity implements ArrowEntityCust
     public int modifyDamage(int amount) {
         float distance = MathHelper.sqrt(this.velocityX * this.velocityX + this.velocityY * this.velocityY + this.velocityZ * this.velocityZ);
         int newDamage = (int)Math.ceil(distance * 2.0D);
-        if(AdventureUpdateBow.isCritEnabled() && crit) {
+        if(AdventureUpdateBow.isCritEnabled() && aub_isCrit()) {
             newDamage += this.random.nextInt(newDamage / 2 + 2);
         }
         return newDamage;
@@ -39,8 +39,8 @@ public abstract class ArrowEntityMixin extends Entity implements ArrowEntityCust
         return 0.05F;
     }
 
-    public void b18bow_setCrit(boolean flag) {
-        crit = flag;
+    public void aub_setCrit(boolean value) {
+        crit = value;
     }
 
     @Definition(id="shake", field = "Lnet/minecraft/entity/projectile/ArrowEntity;shake:I")
@@ -49,6 +49,10 @@ public abstract class ArrowEntityMixin extends Entity implements ArrowEntityCust
     public void setNotCritical(ArrowEntity instance, int value, Operation<Void> original) {
         original.call(instance, value);
         crit = false;
+    }
+
+    public boolean aub_isCrit() {
+        return crit;
     }
 
 
