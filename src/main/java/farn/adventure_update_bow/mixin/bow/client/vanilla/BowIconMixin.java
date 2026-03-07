@@ -1,4 +1,4 @@
-package farn.adventure_update_bow.mixin.bow.client;
+package farn.adventure_update_bow.mixin.bow.client.vanilla;
 
 import farn.adventure_update_bow.impl.vanila_bow.ItemBowImpl;
 import net.minecraft.entity.player.PlayerEntity;
@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
-public class PlayerArrowIconMixin {
+public class BowIconMixin {
 
     @Inject(method="getItemStackTextureId", at = @At("HEAD"), cancellable = true)
     public void bowWhatEverTexture(ItemStack stack, CallbackInfoReturnable<Integer> cir) {

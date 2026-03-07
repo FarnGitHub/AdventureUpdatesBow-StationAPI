@@ -11,10 +11,14 @@ import java.util.Set;
 
 public class MixinPlugin implements IMixinConfigPlugin {
     static List<String> unitweakList = new ArrayList<>();
+    static List<String> aetherList = new ArrayList<>();
 
     static {
-        unitweakList.add("farn.adventure_update_bow.mixin.bow.client.bow_renderer_fix.ItemBowHandHeldMixin");
-        unitweakList.add("farn.adventure_update_bow.mixin.bow.client.bow_renderer_fix.PlayerRendererBowMixin");
+        unitweakList.add("farn.adventure_update_bow.mixin.bow.client.vanilla.bow_renderer_fix.ItemBowHandHeldMixin");
+        unitweakList.add("farn.adventure_update_bow.mixin.bow.client.vanilla.bow_renderer_fix.PlayerRendererBowMixin");
+        aetherList.add("farn.adventure_update_bow.mixin.bow.common.aether.MixinPhoenixBow");
+        aetherList.add("farn.adventure_update_bow.mixin.bow.common.aether.EntityFlamingArrowMixin");
+        aetherList.add("farn.adventure_update_bow.mixin.bow.client.aether.PhoenixBowIconMixin");
     }
 
     @Override
@@ -32,8 +36,8 @@ public class MixinPlugin implements IMixinConfigPlugin {
         if(unitweakList.contains(mixinClassName)) {
             return !FabricLoader.getInstance().isModLoaded("unitweaks");
         }
-        if(mixinClassName.startsWith("farn.adventure_update_bow.mixin.bow.btw")) {
-            return FabricLoader.getInstance().isModLoaded("wolves");
+        if(aetherList.contains(mixinClassName)) {
+            return FabricLoader.getInstance().isModLoaded("aether");
         }
         return true;
     }

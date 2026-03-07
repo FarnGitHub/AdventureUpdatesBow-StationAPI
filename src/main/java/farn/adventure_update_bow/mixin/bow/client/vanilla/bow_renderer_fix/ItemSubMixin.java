@@ -1,4 +1,4 @@
-package farn.adventure_update_bow.mixin.bow.client.bow_renderer_fix;
+package farn.adventure_update_bow.mixin.bow.client.vanilla.bow_renderer_fix;
 
 import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
