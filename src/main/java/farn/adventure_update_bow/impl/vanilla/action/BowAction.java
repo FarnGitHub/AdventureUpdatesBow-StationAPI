@@ -1,4 +1,4 @@
-package farn.adventure_update_bow.action;
+package farn.adventure_update_bow.impl.vanilla.action;
 
 import farn.adventure_update_bow.AdventureUpdateBow;
 import farn.farn_util.api.item_usage.ActionAnimator;

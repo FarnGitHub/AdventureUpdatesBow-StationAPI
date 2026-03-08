@@ -1,4 +1,4 @@
-package farn.adventure_update_bow.mixin.bow.common.aether;
+package farn.adventure_update_bow.mixin.common.aether;
 
 import com.llamalad7.mixinextras.expression.Definition;
 import com.llamalad7.mixinextras.expression.Expression;
@@ -6,7 +6,7 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.matthewperiut.aether.entity.projectile.EntityFlamingArrow;
 import farn.adventure_update_bow.AdventureUpdateBow;
-import farn.adventure_update_bow.impl.vanila_bow.ArrowEntityAUB;
+import farn.adventure_update_bow.impl.vanilla.ArrowEntityAUB;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;

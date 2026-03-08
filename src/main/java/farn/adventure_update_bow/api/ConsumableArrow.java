@@ -1,11 +1,14 @@
 package farn.adventure_update_bow.api;
 
-import it.unimi.dsi.fastutil.ints.IntArrayList;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 
-public class ConsumableArrow {
-    public static final IntArrayList consumables = new IntArrayList();
+import java.util.Random;
 
-    public static void add(int id) {
-        consumables.add(id);
-    }
+public interface ConsumableArrow {
+
+    boolean canConsume(ItemStack stack, PlayerEntity user);
+
+    boolean onConsume(ItemStack stack, PlayerEntity user, int duration, Random random);
+
 }

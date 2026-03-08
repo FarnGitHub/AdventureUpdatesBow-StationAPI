@@ -1,4 +1,4 @@
-package farn.adventure_update_bow.mixin.bow.client.vanilla.bow_renderer_fix;
+package farn.adventure_update_bow.mixin.client.vanilla.bow_renderer_fix;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;

@@ -1,14 +1,16 @@
 package farn.adventure_update_bow.impl.aether;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.matthewperiut.aether.entity.projectile.EntityFlamingArrow;
 import com.matthewperiut.aether.item.AetherItems;
 import farn.adventure_update_bow.AdventureUpdateBow;
-import farn.adventure_update_bow.impl.vanila_bow.ArrowEntityAUB;
-import farn.adventure_update_bow.impl.vanila_bow.ItemBowImpl;
+import farn.adventure_update_bow.impl.vanilla.ArrowEntityAUB;
+import farn.adventure_update_bow.impl.vanilla.ItemBowImpl;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -18,7 +20,7 @@ import java.util.Random;
 public class PhoenixBowImpl {
 
     public static void stopUsingItem(ItemStack stack, World world, PlayerEntity user, int duration, Random random) {
-        if(ItemBowImpl.hasArrow(user)) {
+        if(user.inventory.indexOf(Item.ARROW.id) >= 0) {
             float speed = (ItemBowImpl.getMaxDuration() - duration) / 20.0F;
             speed = (speed * speed + speed * 2.0F) / 3.0F;
             speed = Math.max(Math.min(speed, 1.0F), 0.1F);
@@ -26,7 +28,7 @@ public class PhoenixBowImpl {
             world.playSound(user, "mob.ghast.fireball",
                     1.0F,
                     1.0F / (random.nextFloat() * 0.4F + 1.2F) + speed * 0.5F);
-            ItemBowImpl.removeArrow(user);
+            user.inventory.remove(Item.ARROW.id);
             if (!world.isRemote) {
                 world.spawnEntity(createArrow(
                         world, user,
@@ -34,6 +36,13 @@ public class PhoenixBowImpl {
                         speed >= 1.0F));
             }
         }
+    }
+
+    public static ItemStack use(ItemStack stack, World world, PlayerEntity user, Operation<ItemStack> original) {
+        if (user.inventory.indexOf(Item.ARROW.id) >= 0) {
+            user.farnutil_setUsingItemMaxDuration(stack, ItemBowImpl.getMaxDuration());
+        }
+        return stack;
     }
 
     public static EntityFlamingArrow createArrow(World world, LivingEntity shooter, float speed, boolean crit) {

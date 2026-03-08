@@ -1,4 +1,4 @@
-package farn.adventure_update_bow.mod;
+package farn.adventure_update_bow.impl.mod;
 
 import net.glasslauncher.mods.gcapi3.api.ConfigEntry;
 import net.glasslauncher.mods.gcapi3.api.ConfigRoot;

@@ -16,7 +16,7 @@
       "farn.adventure_update_bow.AdventureUpdateBow"
     ],
     "gcapi3": [
-      "farn.adventure_update_bow.mod.AUBGlassConfig"
+      "farn.adventure_update_bow.impl.mod.AUBGlassConfig"
     ]
   },
   "mixins": [

@@ -1,8 +1,8 @@
-package farn.adventure_update_bow.impl.vanila_bow;
+package farn.adventure_update_bow.impl.vanilla;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import farn.adventure_update_bow.AdventureUpdateBow;
-import farn.adventure_update_bow.api.ConsumableArrow;
+import farn.adventure_update_bow.api.ConsumableArrows;
 import farn.farn_util.api.item_usage.ActionHandler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -19,29 +19,14 @@ import java.util.Random;
 public class ItemBowImpl {
 
     public static ItemStack use(ItemStack stack, World world, PlayerEntity user, Operation<ItemStack> original) {
-        if (hasArrow(user)) {
+        if (ConsumableArrows.hasArrow(stack, user)) {
             user.farnutil_setUsingItemMaxDuration(stack, getMaxDuration());
         }
         return stack;
     }
 
     public static void stopUsingItem(ItemStack stack, World world, PlayerEntity user, int duration, Random random) {
-        if(hasArrow(user)) {
-            float speed = (getMaxDuration() - duration) / 20.0F;
-            speed = (speed * speed + speed * 2.0F) / 3.0F;
-            speed = Math.max(Math.min(speed, 1.0F), 0.1F);
-            stack.damage(1, user);
-            world.playSound(user, "adventure_update_bow:bow.shoot",
-                    1.0F,
-                    1.0F / (random.nextFloat() * 0.4F + 1.2F) + speed * 0.5F);
-            removeArrow(user);
-            if (!world.isRemote) {
-                world.spawnEntity(createArrow(
-                        world, user,
-                        speed * 2,
-                        speed >= 1.0F));
-            }
-        }
+        ConsumableArrows.onUse(stack, user, duration, random);
     }
 
     public static ActionHandler getActionType() {
@@ -99,19 +84,5 @@ public class ItemBowImpl {
         arrow.setVelocity(arrow.velocityX, arrow.velocityY, arrow.velocityZ, 1.5F * speed, 1.0F);
         arrow.aub_setCrit(crit);
         return arrow;
-    }
-
-    public static int getArrow(PlayerEntity player) {
-        for(int id : ConsumableArrow.consumables)
-            if(player.inventory.indexOf(id) >= 0) return id;
-        return -1;
-    }
-
-    public static boolean hasArrow(PlayerEntity player) {
-        return getArrow(player) >= 0;
-    }
-
-    public static void removeArrow(PlayerEntity player) {
-        player.inventory.remove(getArrow(player));
     }
 }

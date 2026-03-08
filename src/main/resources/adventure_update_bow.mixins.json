@@ -4,21 +4,21 @@
   "package": "farn.adventure_update_bow.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "bow.common.ItemBowMixin",
-    "bow.common.ArrowEntityMixin",
-    "bow.common.aether.EntityFlamingArrowMixin",
-    "bow.common.aether.MixinPhoenixBow"
+    "common.vanilla.ItemBowMixin",
+    "common.vanilla.ArrowEntityMixin",
+    "common.aether.EntityFlamingArrowMixin",
+    "common.aether.MixinPhoenixBow"
   ],
   "server": [
   ],
   "client": [
-    "bow.client.vanilla.bow_renderer_fix.ItemBowHandHeldMixin",
-    "bow.client.vanilla.bow_renderer_fix.PlayerRendererBowMixin",
-    "bow.client.vanilla.BowIconMixin",
-    "bow.client.vanilla.bow_renderer_fix.ItemSubMixin",
-    "bow.client.aether.PhoenixBowIconMixin"
+    "client.vanilla.bow_renderer_fix.ItemBowHandHeldMixin",
+    "client.vanilla.bow_renderer_fix.PlayerRendererBowMixin",
+    "client.vanilla.BowIconMixin",
+    "client.vanilla.bow_renderer_fix.ItemSubMixin",
+    "client.aether.PhoenixBowIconMixin"
   ],
-  "plugin": "farn.adventure_update_bow.mixin.bow.MixinPlugin",
+  "plugin": "farn.adventure_update_bow.mixin.MixinPlugin",
   "mixinextras": {"minVersion": "0.5.0"},
   "injectors": {
     "defaultRequire": 1

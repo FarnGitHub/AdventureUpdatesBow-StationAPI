@@ -1,11 +1,11 @@
-package farn.adventure_update_bow.mixin.bow.common;
+package farn.adventure_update_bow.mixin.common.vanilla;
 
 import com.llamalad7.mixinextras.expression.Definition;
 import com.llamalad7.mixinextras.expression.Expression;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import farn.adventure_update_bow.AdventureUpdateBow;
-import farn.adventure_update_bow.impl.vanila_bow.ArrowEntityAUB;
+import farn.adventure_update_bow.impl.vanilla.ArrowEntityAUB;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.util.math.MathHelper;

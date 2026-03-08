@@ -1,18 +1,21 @@
 package farn.adventure_update_bow;
 
-import farn.adventure_update_bow.action.BowAction;
-import farn.adventure_update_bow.api.ConsumableArrow;
-import farn.adventure_update_bow.mod.AUBGlassConfig;
+import farn.adventure_update_bow.api.ConsumableArrows;
+import farn.adventure_update_bow.impl.vanilla.action.BowAction;
+import farn.adventure_update_bow.impl.mod.AUBGlassConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
+import net.fabricmc.loader.api.entrypoint.EntrypointContainer;
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.minecraft.item.Item;
+import net.modificationstation.stationapi.api.StationAPI;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
 import net.modificationstation.stationapi.api.event.init.InitFinishedEvent;
 import net.modificationstation.stationapi.api.event.mod.InitEvent;
+import net.modificationstation.stationapi.api.event.registry.AfterBlockAndItemRegisterEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
+import net.modificationstation.stationapi.api.mod.entrypoint.EntrypointManager;
 import net.modificationstation.stationapi.api.util.Identifier;
 import net.modificationstation.stationapi.api.util.Namespace;
 
@@ -49,8 +52,9 @@ public class AdventureUpdateBow {
     }
 
     @EventListener
-    public void initFinished(InitFinishedEvent event) {
-        ConsumableArrow.add(Item.ARROW.id);
+    public void initFinished(AfterBlockAndItemRegisterEvent event) {
+        FabricLoader.getInstance().getEntrypointContainers("adventure_update_bow", Object.class).forEach(EntrypointManager::setup);
+        ConsumableArrows.init();
     }
 
     public static boolean isCritEnabled() {

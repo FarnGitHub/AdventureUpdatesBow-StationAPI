@@ -1,4 +1,4 @@
-package farn.adventure_update_bow.impl.vanila_bow;
+package farn.adventure_update_bow.impl.vanilla;
 
 
 public interface ArrowEntityAUB {

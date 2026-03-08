@@ -1,6 +1,6 @@
-package farn.adventure_update_bow.mixin.bow.client.aether;
+package farn.adventure_update_bow.mixin.client.vanilla;
 
-import farn.adventure_update_bow.impl.aether.PhoenixBowImpl;
+import farn.adventure_update_bow.impl.vanilla.ItemBowImpl;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
@@ -9,11 +9,11 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
-public class PhoenixBowIconMixin {
+public class BowIconMixin {
 
     @Inject(method="getItemStackTextureId", at = @At("HEAD"), cancellable = true)
     public void bowWhatEverTexture(ItemStack stack, CallbackInfoReturnable<Integer> cir) {
-        int icon = PhoenixBowImpl.getPullingIcon(stack, (PlayerEntity)(Object)this);
+        int icon = ItemBowImpl.getPullingIcon(stack, (PlayerEntity)(Object)this);
         if(icon > 0) {
             cir.setReturnValue(icon);
         }

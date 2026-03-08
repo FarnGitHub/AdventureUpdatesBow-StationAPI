@@ -1,4 +1,4 @@
-package farn.adventure_update_bow.mixin.bow;
+package farn.adventure_update_bow.mixin;
 
 import net.fabricmc.loader.api.FabricLoader;
 import org.objectweb.asm.tree.ClassNode;
@@ -14,11 +14,11 @@ public class MixinPlugin implements IMixinConfigPlugin {
     static List<String> aetherList = new ArrayList<>();
 
     static {
-        unitweakList.add("farn.adventure_update_bow.mixin.bow.client.vanilla.bow_renderer_fix.ItemBowHandHeldMixin");
-        unitweakList.add("farn.adventure_update_bow.mixin.bow.client.vanilla.bow_renderer_fix.PlayerRendererBowMixin");
-        aetherList.add("farn.adventure_update_bow.mixin.bow.common.aether.MixinPhoenixBow");
-        aetherList.add("farn.adventure_update_bow.mixin.bow.common.aether.EntityFlamingArrowMixin");
-        aetherList.add("farn.adventure_update_bow.mixin.bow.client.aether.PhoenixBowIconMixin");
+        unitweakList.add("farn.adventure_update_bow.mixin.client.vanilla.bow_renderer_fix.ItemBowHandHeldMixin");
+        unitweakList.add("farn.adventure_update_bow.mixin.client.vanilla.bow_renderer_fix.PlayerRendererBowMixin");
+        aetherList.add("farn.adventure_update_bow.mixin.common.aether.MixinPhoenixBow");
+        aetherList.add("farn.adventure_update_bow.mixin.common.aether.EntityFlamingArrowMixin");
+        aetherList.add("farn.adventure_update_bow.mixin.client.aether.PhoenixBowIconMixin");
     }
 
     @Override
