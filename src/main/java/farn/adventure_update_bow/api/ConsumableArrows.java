@@ -24,6 +24,6 @@ public class ConsumableArrows {
 
     public static void init(){
         StationAPI.EVENT_BUS.post(new ConsumableArrowEvent());
-        consumables.add(new GenericConsumableArrow());
+        //consumables.add(new GenericConsumableArrow());
     }
 }

@@ -17,6 +17,9 @@
     ],
     "gcapi3": [
       "farn.adventure_update_bow.impl.mod.AUBGlassConfig"
+    ],
+    "adventure_update_bow": [
+      "farn.adventure_update_bow.impl.DefaultConsumableArrow"
     ]
   },
   "mixins": [

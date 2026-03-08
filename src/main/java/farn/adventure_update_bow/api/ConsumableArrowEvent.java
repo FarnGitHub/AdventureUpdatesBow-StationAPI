@@ -6,5 +6,6 @@ public class ConsumableArrowEvent extends Event {
 
     public void register(ConsumableArrow consumableArrow) {
         ConsumableArrows.consumables.add(consumableArrow);
+
     }
 }
