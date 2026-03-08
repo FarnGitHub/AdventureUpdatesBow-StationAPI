@@ -12,10 +12,12 @@ import net.minecraft.world.World;
 import net.modificationstation.stationapi.api.template.item.TemplateItem;
 import net.modificationstation.stationapi.api.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+@Pseudo
 @Mixin(ItemPhoenixBow.class)
 public abstract class MixinPhoenixBow  extends TemplateItem {
 

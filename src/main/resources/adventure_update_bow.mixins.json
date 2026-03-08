@@ -12,8 +12,6 @@
     "common.elemental_arrow.FlameArrowEntityMixin",
     "common.elemental_arrow.IceArrowEntityMixin"
   ],
-  "server": [
-  ],
   "client": [
     "client.vanilla.bow_renderer_fix.ItemBowHandHeldMixin",
     "client.vanilla.bow_renderer_fix.PlayerRendererBowMixin",
