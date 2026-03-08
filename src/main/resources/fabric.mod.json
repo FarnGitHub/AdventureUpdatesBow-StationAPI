@@ -19,7 +19,7 @@
       "farn.adventure_update_bow.impl.mod.AUBGlassConfig"
     ],
     "adventure_update_bow": [
-      "farn.adventure_update_bow.impl.DefaultConsumableArrow"
+      "farn.adventure_update_bow.impl.DefaultArrowListener"
     ]
   },
   "mixins": [

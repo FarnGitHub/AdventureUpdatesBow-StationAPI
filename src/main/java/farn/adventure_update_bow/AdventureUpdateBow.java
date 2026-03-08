@@ -1,17 +1,15 @@
 package farn.adventure_update_bow;
 
-import farn.adventure_update_bow.api.ConsumableArrows;
+import farn.adventure_update_bow.api.ArrowRegisterEvent;
 import farn.adventure_update_bow.impl.vanilla.action.BowAction;
-import farn.adventure_update_bow.impl.mod.AUBGlassConfig;
+import farn.adventure_update_bow.impl.config.AUBGlassConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
-import net.fabricmc.loader.api.entrypoint.EntrypointContainer;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.modificationstation.stationapi.api.StationAPI;
 import net.modificationstation.stationapi.api.client.event.texture.TextureRegisterEvent;
 import net.modificationstation.stationapi.api.client.texture.atlas.Atlases;
-import net.modificationstation.stationapi.api.event.init.InitFinishedEvent;
 import net.modificationstation.stationapi.api.event.mod.InitEvent;
 import net.modificationstation.stationapi.api.event.registry.AfterBlockAndItemRegisterEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
@@ -52,9 +50,9 @@ public class AdventureUpdateBow {
     }
 
     @EventListener
-    public void initFinished(AfterBlockAndItemRegisterEvent event) {
+    public void registerAllArrow(AfterBlockAndItemRegisterEvent event) {
         FabricLoader.getInstance().getEntrypointContainers("adventure_update_bow", Object.class).forEach(EntrypointManager::setup);
-        ConsumableArrows.init();
+        StationAPI.EVENT_BUS.post(new ArrowRegisterEvent());
     }
 
     public static boolean isCritEnabled() {

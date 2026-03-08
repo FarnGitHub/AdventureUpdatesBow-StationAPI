@@ -1,39 +1,38 @@
-package farn.adventure_update_bow.impl.elementalArrow;
+package farn.adventure_update_bow.impl.elemental_arrow;
 
-import farn.adventure_update_bow.api.ConsumableArrow;
-import farn.adventure_update_bow.api.ConsumableArrows;
+import farn.adventure_update_bow.api.ArrowProperties;
+import farn.adventure_update_bow.api.ArrowRegistry;
 import farn.adventure_update_bow.impl.vanilla.ArrowEntityAUB;
 import farn.adventure_update_bow.impl.vanilla.ItemBowImpl;
 import net.danygames2014.elementalarrows.entity.ElementalArrowEntity;
 import net.danygames2014.elementalarrows.item.ElementalArrowItem;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
 
 import java.util.Random;
 
-public class ElementalArrowConsumable implements ConsumableArrow {
+public class ElementalArrowProperties implements ArrowProperties {
 
 
     public static void register() {
-        ConsumableArrows.consumables.add(new ElementalArrowConsumable());
+        ArrowRegistry.register(new ElementalArrowProperties());
     }
 
     @Override
-    public boolean canConsume(ItemStack stack, PlayerEntity user) {
+    public boolean canUse(ItemStack heldStack, PlayerEntity user) {
         return getElementalArrowItem(user) != null;
     }
 
     @Override
-    public boolean onConsume(ItemStack stack, PlayerEntity user, int duration, Random random) {
+    public boolean onUse(ItemStack heldStack, PlayerEntity user, int duration, Random random) {
         ElementalArrowItem arrow = getElementalArrowItem(user);
         if(arrow != null) {
             float speed = (ItemBowImpl.getMaxDuration() - duration) / 20.0F;
             speed = (speed * speed + speed * 2.0F) / 3.0F;
             speed = Math.max(Math.min(speed, 1.0F), 0.1F);
-            stack.damage(1, user);
+            heldStack.damage(1, user);
             user.world.playSound(user, "adventure_update_bow:bow.shoot",
                     1.0F,
                     1.0F / (random.nextFloat() * 0.4F + 1.2F) + speed * 0.5F);

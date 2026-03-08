@@ -1,26 +1,26 @@
 package farn.adventure_update_bow.impl.vanilla;
 
-import farn.adventure_update_bow.api.ConsumableArrow;
+import farn.adventure_update_bow.api.ArrowProperties;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import java.util.Random;
 
-public class GenericConsumableArrow implements ConsumableArrow {
+public class VanillaArrowProperties implements ArrowProperties {
 
     @Override
-    public boolean canConsume(ItemStack stack, PlayerEntity user) {
+    public boolean canUse(ItemStack heldStack, PlayerEntity user) {
         return user.inventory.indexOf(Item.ARROW.id) >= 0;
     }
 
     @Override
-    public boolean onConsume(ItemStack stack, PlayerEntity user, int duration, Random random) {
+    public boolean onUse(ItemStack heldStack, PlayerEntity user, int duration, Random random) {
         if(user.inventory.indexOf(Item.ARROW.id) >= 0){
             float speed = (ItemBowImpl.getMaxDuration() - duration) / 20.0F;
             speed = (speed * speed + speed * 2.0F) / 3.0F;
             speed = Math.max(Math.min(speed, 1.0F), 0.1F);
-            stack.damage(1, user);
+            heldStack.damage(1, user);
             user.world.playSound(user, "adventure_update_bow:bow.shoot",
                     1.0F,
                     1.0F / (random.nextFloat() * 0.4F + 1.2F) + speed * 0.5F);

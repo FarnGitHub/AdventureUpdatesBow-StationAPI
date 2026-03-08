@@ -2,7 +2,7 @@ package farn.adventure_update_bow.impl.vanilla;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import farn.adventure_update_bow.AdventureUpdateBow;
-import farn.adventure_update_bow.api.ConsumableArrows;
+import farn.adventure_update_bow.api.ArrowRegistry;
 import farn.farn_util.api.item_usage.ActionHandler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -19,14 +19,14 @@ import java.util.Random;
 public class ItemBowImpl {
 
     public static ItemStack use(ItemStack stack, World world, PlayerEntity user, Operation<ItemStack> original) {
-        if (ConsumableArrows.hasArrow(stack, user)) {
+        if (ArrowRegistry.hasArrow(stack, user)) {
             user.farnutil_setUsingItemMaxDuration(stack, getMaxDuration());
         }
         return stack;
     }
 
     public static void stopUsingItem(ItemStack stack, World world, PlayerEntity user, int duration, Random random) {
-        ConsumableArrows.onUse(stack, user, duration, random);
+        ArrowRegistry.onUse(stack, user, duration, random);
     }
 
     public static ActionHandler getActionType() {
