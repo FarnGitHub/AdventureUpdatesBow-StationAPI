@@ -1,7 +1,7 @@
 package farn.adventure_update_bow;
 
 import farn.adventure_update_bow.api.ArrowRegisterEvent;
-import farn.adventure_update_bow.impl.vanilla.action.BowAction;
+import farn.adventure_update_bow.impl.action.BowAction;
 import farn.adventure_update_bow.impl.config.AUBGlassConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

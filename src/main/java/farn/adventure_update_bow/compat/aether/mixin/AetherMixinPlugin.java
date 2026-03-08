@@ -1,4 +1,4 @@
-package farn.adventure_update_bow.mixin;
+package farn.adventure_update_bow.compat.aether.mixin;
 
 import net.fabricmc.loader.api.FabricLoader;
 import org.objectweb.asm.tree.ClassNode;
@@ -9,13 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class MixinPlugin implements IMixinConfigPlugin {
-    static List<String> unitweakList = new ArrayList<>();
-
-    static {
-        unitweakList.add("farn.adventure_update_bow.mixin.client.bow_renderer_fix.ItemBowHandHeldMixin");
-        unitweakList.add("farn.adventure_update_bow.mixin.client.bow_renderer_fix.PlayerRendererBowMixin");
-    }
+public class AetherMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public void onLoad(String mixinPackage) {
@@ -29,10 +23,7 @@ public class MixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if(unitweakList.contains(mixinClassName)) {
-            return !FabricLoader.getInstance().isModLoaded("unitweaks");
-        }
-        return true;
+        return FabricLoader.getInstance().isModLoaded("aether");
     }
 
     @Override

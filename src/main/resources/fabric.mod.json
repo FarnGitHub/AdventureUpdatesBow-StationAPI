@@ -19,11 +19,14 @@
       "farn.adventure_update_bow.impl.config.AUBGlassConfig"
     ],
     "adventure_update_bow": [
-      "farn.adventure_update_bow.impl.DefaultArrowListener"
+      "farn.adventure_update_bow.impl.item.DefaultArrowListener",
+      "farn.adventure_update_bow.compat.elemental_arrow.ElementalArrowListener"
     ]
   },
   "mixins": [
-    "adventure_update_bow.mixins.json"
+    "adventure_update_bow/main.mixins.json",
+    "adventure_update_bow/aether.mixin.json",
+    "adventure_update_bow/elemental.mixin.json"
   ],
   "depends": {
     "minecraft": "1.0.0-beta.7.3",

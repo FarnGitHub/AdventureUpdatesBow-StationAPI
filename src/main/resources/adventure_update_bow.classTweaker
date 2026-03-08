@@ -1,6 +1,6 @@
 classTweaker v1 named
 
 accessible field net/minecraft/client/Minecraft INSTANCE Lnet/minecraft/client/Minecraft;
-transitive-inject-interface	net/minecraft/entity/projectile/ArrowEntity farn/adventure_update_bow/impl/vanilla/ArrowEntityAUB
+transitive-inject-interface	net/minecraft/entity/projectile/ArrowEntity farn/adventure_update_bow/impl/ChargingArrow
 accessible method net/minecraft/entity/player/PlayerInventory indexOf (I)I
 

@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "farn.adventure_update_bow.compat.aether.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "common.EntityFlamingArrowMixin",
+    "common.MixinPhoenixBow"
+  ],
+  "client": [
+    "client.PhoenixBowIconMixin"
+  ],
+  "plugin": "farn.adventure_update_bow.compat.aether.mixin.AetherMixinPlugin",
+  "mixinextras": {"minVersion": "0.5.0"},
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
