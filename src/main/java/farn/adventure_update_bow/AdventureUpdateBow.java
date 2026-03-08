@@ -36,9 +36,11 @@ public class AdventureUpdateBow {
     @Environment(EnvType.CLIENT)
     @EventListener
     public void registerTextures(TextureRegisterEvent event) {
+        boolean aetherLoad = FabricLoader.getInstance().isModLoaded("aether");
         for(int pull = 0; pull < bowPulling.length; ++pull) {
             bowPulling[pull] = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/bow_pull_" + pull)).index;
-            phoenixBowPulling[pull] = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/PhoenixBow_pull_" + pull)).index;
+            if(aetherLoad)
+                phoenixBowPulling[pull] =  Atlases.getGuiItems(). addTexture(NAMESPACE.id("item/PhoenixBow_pull_" + pull)).index;
         }
     }
 
@@ -51,7 +53,7 @@ public class AdventureUpdateBow {
 
     @EventListener
     public void registerAllArrow(AfterBlockAndItemRegisterEvent event) {
-        FabricLoader.getInstance().getEntrypointContainers("adventure_update_bow", Object.class).forEach(EntrypointManager::setup);
+        FabricLoader.getInstance().getEntrypointContainers("adventure_update_bow_mixin", Object.class).forEach(EntrypointManager::setup);
         StationAPI.EVENT_BUS.post(new ArrowRegisterEvent());
     }
 

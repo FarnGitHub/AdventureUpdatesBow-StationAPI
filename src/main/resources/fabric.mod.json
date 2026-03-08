@@ -24,9 +24,9 @@
     ]
   },
   "mixins": [
-    "adventure_update_bow/main.mixins.json",
-    "adventure_update_bow/aether.mixin.json",
-    "adventure_update_bow/elemental.mixin.json"
+    "adventure_update_bow_mixin/main.mixins.json",
+    "adventure_update_bow_mixin/aether.mixin.json",
+    "adventure_update_bow_mixin/elemental.mixin.json"
   ],
   "depends": {
     "minecraft": "1.0.0-beta.7.3",

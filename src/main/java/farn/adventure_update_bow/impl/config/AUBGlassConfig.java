@@ -5,7 +5,7 @@ import net.glasslauncher.mods.gcapi3.api.ConfigRoot;
 
 public class AUBGlassConfig {
 
-    @ConfigRoot(value = "adventure_update_bow", visibleName = "Adventure Update's Bow Config")
+    @ConfigRoot(value = "adventure_update_bow_mixin", visibleName = "Adventure Update's Bow Config")
     public static final InstanceConfig instance = new InstanceConfig();
 
     public static class InstanceConfig {
