@@ -29,6 +29,7 @@ public class AdventureUpdateBow {
     public static int[] phoenixBowPulling = new int[3];
 
     public static boolean GCAPI = false;
+    public static boolean uniTweak = false;
 
     public static Identifier bow_rotate;
     public static BowAction bowAction;
@@ -49,6 +50,7 @@ public class AdventureUpdateBow {
         bow_rotate = NAMESPACE.id("bow_rotate");
         bowAction = new BowAction();
         GCAPI = FabricLoader.getInstance().isModLoaded("gcapi3");
+        uniTweak = FabricLoader.getInstance().isModLoaded("unitweaks");
     }
 
     @EventListener

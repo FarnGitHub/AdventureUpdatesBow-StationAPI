@@ -9,13 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+@Deprecated
 public class MixinPlugin implements IMixinConfigPlugin {
     static List<String> unitweakList = new ArrayList<>();
-
-    static {
-        unitweakList.add("farn.adventure_update_bow.mixin.client.bow_renderer_fix.ItemBowHandHeldMixin");
-        unitweakList.add("farn.adventure_update_bow.mixin.client.bow_renderer_fix.PlayerRendererBowMixin");
-    }
 
     @Override
     public void onLoad(String mixinPackage) {
