@@ -5,6 +5,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
 public class VanillaArrowProperties implements ArrowProperties {
@@ -16,7 +17,7 @@ public class VanillaArrowProperties implements ArrowProperties {
 
     @Override
     public boolean onUse(ItemStack heldStack, PlayerEntity user, int duration, Random random) {
-        if(user.inventory.indexOf(Item.ARROW.id) >= 0){
+        if(canUse(heldStack, user)) {
             float speed = (ItemBowImpl.getMaxDuration() - duration) / 20.0F;
             speed = (speed * speed + speed * 2.0F) / 3.0F;
             speed = Math.max(Math.min(speed, 1.0F), 0.1F);
@@ -24,7 +25,7 @@ public class VanillaArrowProperties implements ArrowProperties {
             user.world.playSound(user, "adventure_update_bow:bow.shoot",
                     1.0F,
                     1.0F / (random.nextFloat() * 0.4F + 1.2F) + speed * 0.5F);
-            user.inventory.remove(Item.ARROW.id);
+            consumeItem(heldStack, user, duration, random);
             if (!user.world.isRemote) {
                 user.world.spawnEntity(ItemBowImpl.createArrow(
                         user.world, user,
@@ -34,5 +35,10 @@ public class VanillaArrowProperties implements ArrowProperties {
             return true;
         }
         return false;
+    }
+
+    @SuppressWarnings("unused")
+    public void consumeItem(@Nullable ItemStack heldStack, PlayerEntity user, int duration, Random random) {
+        user.inventory.remove(Item.ARROW.id);
     }
 }

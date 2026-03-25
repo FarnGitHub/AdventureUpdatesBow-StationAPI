@@ -20,7 +20,8 @@
     ],
     "adventure_update_bow": [
       "farn.adventure_update_bow.impl.item.DefaultArrowListener",
-      "farn.adventure_update_bow.compat.elemental_arrow.ElementalArrowListener"
+      "farn.adventure_update_bow.compat.elemental_arrow.ElementalArrowListener",
+      "farn.adventure_update_bow.compat.bhcreative.CreativeArrowListener"
     ]
   },
   "mixins": [

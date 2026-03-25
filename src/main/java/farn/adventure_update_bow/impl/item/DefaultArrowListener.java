@@ -9,6 +9,6 @@ public class DefaultArrowListener {
     @SuppressWarnings("unused")
     @EventListener(priority = ListenerPriority.LOWEST)
     public void registerArrow(ArrowRegisterEvent e) {
-        e.register(new VanillaArrowProperties());
+         e.register(new VanillaArrowProperties());
     }
 }

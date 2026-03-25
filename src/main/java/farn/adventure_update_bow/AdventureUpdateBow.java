@@ -53,7 +53,7 @@ public class AdventureUpdateBow {
 
     @EventListener
     public void registerAllArrow(AfterBlockAndItemRegisterEvent event) {
-        FabricLoader.getInstance().getEntrypointContainers("adventure_update_bow_mixin", Object.class).forEach(EntrypointManager::setup);
+        FabricLoader.getInstance().getEntrypointContainers("adventure_update_bow", Object.class).forEach(EntrypointManager::setup);
         StationAPI.EVENT_BUS.post(new ArrowRegisterEvent());
     }
 

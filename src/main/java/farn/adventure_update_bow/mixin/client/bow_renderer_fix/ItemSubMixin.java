@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Item.class)
 public class ItemSubMixin {
 
-    @Inject(method="isHandheld", at = @At("HEAD"))
+    @Inject(method="isHandheld", at = @At("HEAD"), cancellable = true)
     public void overridden_handheld(CallbackInfoReturnable<Boolean> cir) {
     }
 }
