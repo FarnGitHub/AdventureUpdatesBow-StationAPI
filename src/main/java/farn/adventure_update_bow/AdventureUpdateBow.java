@@ -68,4 +68,9 @@ public class AdventureUpdateBow {
         if(GCAPI) return AUBGlassConfig.instance.durability;
         return true;
     }
+
+    public static boolean isPreciseSkeleton() {
+        if(GCAPI) return AUBGlassConfig.instance.preciseSkeleton;
+        return true;
+    }
 }

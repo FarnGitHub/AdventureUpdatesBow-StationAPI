@@ -16,5 +16,8 @@ public class AUBGlassConfig {
         @ConfigEntry(name = "Crit Damage", description = "Allowed for higher randomized damage when fully charged", multiplayerSynced = true)
         public Boolean crit = false;
 
+        @ConfigEntry(name = "Precise Skeleton", description = "Skeleton shoot slower but farther", multiplayerSynced = true)
+        public Boolean preciseSkeleton = false;
+
     }
 }
