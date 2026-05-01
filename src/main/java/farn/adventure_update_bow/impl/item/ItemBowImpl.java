@@ -3,7 +3,6 @@ package farn.adventure_update_bow.impl.item;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import farn.adventure_update_bow.AdventureUpdateBow;
 import farn.adventure_update_bow.api.ArrowRegistry;
-import farn.farn_util.api.item_usage.ActionHandler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.LivingEntity;
@@ -29,8 +28,8 @@ public class ItemBowImpl {
         ArrowRegistry.onUse(stack, user, duration, random);
     }
 
-    public static ActionHandler getActionType() {
-        return AdventureUpdateBow.bowAction;
+    public static String getActionId() {
+        return "AUB:BOW_CHARGING";
     }
 
     public static int getMaxDuration() {

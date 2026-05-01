@@ -15,6 +15,9 @@
     "stationapi:event_bus": [
       "farn.adventure_update_bow.AdventureUpdateBow"
     ],
+    "stationapi:event_bus_client": [
+      "farn.adventure_update_bow.impl.BowAnimation"
+    ],
     "gcapi3": [
       "farn.adventure_update_bow.impl.config.AUBGlassConfig"
     ],

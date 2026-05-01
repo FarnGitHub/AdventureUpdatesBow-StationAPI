@@ -5,7 +5,6 @@ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.matthewperiut.aether.item.tool.ItemPhoenixBow;
 import farn.adventure_update_bow.compat.aether.PhoenixBowImpl;
 import farn.adventure_update_bow.impl.item.ItemBowImpl;
-import farn.farn_util.api.item_usage.ActionHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -42,8 +41,8 @@ public abstract class MixinPhoenixBow  extends TemplateItem {
     }
 
     @Override
-    public ActionHandler farnutil_getActionType() {
-        return ItemBowImpl.getActionType();
+    public String farnutil_getActionId() {
+        return ItemBowImpl.getActionId();
     }
 
     @Override

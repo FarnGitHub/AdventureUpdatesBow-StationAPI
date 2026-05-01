@@ -1,7 +1,6 @@
 package farn.adventure_update_bow;
 
 import farn.adventure_update_bow.api.ArrowRegisterEvent;
-import farn.adventure_update_bow.impl.action.BowAction;
 import farn.adventure_update_bow.impl.config.AUBGlassConfig;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -32,7 +31,6 @@ public class AdventureUpdateBow {
     public static boolean uniTweak = false;
 
     public static Identifier bow_rotate;
-    public static BowAction bowAction;
 
     @Environment(EnvType.CLIENT)
     @EventListener
@@ -48,7 +46,6 @@ public class AdventureUpdateBow {
     @EventListener
     public void init(InitEvent event) {
         bow_rotate = NAMESPACE.id("bow_rotate");
-        bowAction = new BowAction();
         GCAPI = FabricLoader.getInstance().isModLoaded("gcapi3");
         uniTweak = FabricLoader.getInstance().isModLoaded("unitweaks");
     }
