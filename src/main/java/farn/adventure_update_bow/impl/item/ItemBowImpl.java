@@ -80,7 +80,7 @@ public class ItemBowImpl {
         arrow.velocityX = -MathHelper.sin(arrow.yaw / 180.0F * 3.1415927F) * MathHelper.cos(arrow.pitch / 180.0F * 3.1415927F);
         arrow.velocityZ = MathHelper.cos(arrow.yaw / 180.0F * 3.1415927F) * MathHelper.cos(arrow.pitch / 180.0F * 3.1415927F);
         arrow.velocityY = -MathHelper.sin(arrow.pitch / 180.0F * 3.1415927F);
-        arrow.setVelocity(arrow.velocityX, arrow.velocityY, arrow.velocityZ, 1.5F * speed, 1.0F);
+        arrow.setVelocity(arrow.velocityX, arrow.velocityY, arrow.velocityZ, speed * 1.5F, 1.0F);
         arrow.aub_setCrit(crit);
         return arrow;
     }

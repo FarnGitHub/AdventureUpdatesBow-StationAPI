@@ -25,7 +25,7 @@ public class AdventureUpdateBow {
     public static int[] bowPulling = new int[3];
 
     @Environment(EnvType.CLIENT)
-    public static int[] phoenixBowPulling = new int[3];
+    public static int[] phoenixBowPulling;
 
     public static boolean GCAPI = false;
     public static boolean uniTweak = false;
@@ -36,16 +36,18 @@ public class AdventureUpdateBow {
     @EventListener
     public void registerTextures(TextureRegisterEvent event) {
         boolean aetherLoad = FabricLoader.getInstance().isModLoaded("aether");
+        if(aetherLoad)
+            phoenixBowPulling = new int[3];
         for(int pull = 0; pull < bowPulling.length; ++pull) {
-            bowPulling[pull] = Atlases.getGuiItems().addTexture(NAMESPACE.id("item/bow_pull_" + pull)).index;
+            bowPulling[pull] = Atlases.getGuiItems().addTexture(id("item/bow_pull_" + pull)).index;
             if(aetherLoad)
-                phoenixBowPulling[pull] =  Atlases.getGuiItems(). addTexture(NAMESPACE.id("item/PhoenixBow_pull_" + pull)).index;
+                phoenixBowPulling[pull] =  Atlases.getGuiItems().addTexture(id("item/PhoenixBow_pull_" + pull)).index;
         }
     }
 
     @EventListener
     public void init(InitEvent event) {
-        bow_rotate = NAMESPACE.id("bow_rotate");
+        bow_rotate = id("bow_rotate");
         GCAPI = FabricLoader.getInstance().isModLoaded("gcapi3");
         uniTweak = FabricLoader.getInstance().isModLoaded("unitweaks");
     }
@@ -69,5 +71,9 @@ public class AdventureUpdateBow {
     public static boolean isPreciseSkeleton() {
         if(GCAPI) return AUBGlassConfig.instance.preciseSkeleton;
         return true;
+    }
+
+    public static Identifier id(String id) {
+        return NAMESPACE.id(id);
     }
 }

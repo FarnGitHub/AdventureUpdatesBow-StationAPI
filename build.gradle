@@ -1,8 +1,7 @@
 plugins {
     id 'maven-publish'
-    id 'fabric-loom' version '1.15.3'
-    id 'babric-loom-extension' version '1.14.1'
-    id "com.modrinth.minotaur" version "2.+"
+    id 'fabric-loom' version '1.17.2'
+    id 'babric-loom-extension' version '1.16.1'
 }
 
 version = property("mod_version")
@@ -155,10 +154,6 @@ dependencies {
         }
     }
 
-    if (project.hasProperty("debugutilities_version")) {
-        modImplementation("net.danygames2014:DebugUtilities:${project.debugutilities_version}")
-    }
-
     if (project.hasProperty("retroauth_version")) {
         modRuntimeOnly("maven.modrinth:retroauth:${project.retroauth_version}-b1.7.3") {
             transitive = false
@@ -171,11 +166,11 @@ dependencies {
         transitive = false
     }
 
-    modImplementation("maven.modrinth:farnutil:3.5.1-babric-b1.7.3")
+    modImplementation("maven.modrinth:farnutil:3.6.9-babric-b1.7.3")
 
-    modImplementation("maven.modrinth:aether-stapi:1.4.1-b1.7.3")
+    modImplementation("maven.modrinth:aether-stapi:1.5.0-b1.7.3")
 
-    modImplementation("maven.modrinth:elemental-arrows-stationapi:1.1.0-b1.7.3")
+    modImplementation("maven.modrinth:elemental-arrows-stationapi:1.2.0-b1.7.3")
 }
 
 processResources {
@@ -200,50 +195,8 @@ tasks.withType(Test).configureEach {
     failOnNoDiscoveredTests = false
 }
 
-java {
-    withSourcesJar()
-}
-
 jar {
     from("LICENSE") {
         rename { "${it}_" + base.archivesName.get() }
-    }
-}
-
-// Maven Publishing
-publishing {
-    repositories {
-        mavenLocal()
-
-        // Glass Maven
-        if (project.hasProperty("calmilamsy_secret_publishing_cave_username")) {
-            maven {
-                url = "https://maven.glass-launcher.net/releases"
-                credentials {
-                    username = "${project.calmilamsy_secret_publishing_cave_username}"
-                    password = "${project.calmilamsy_secret_publishing_cave_password}"
-                }
-            }
-        }
-
-        // NyaRepo
-        if (project.hasProperty("nyarepo_publishing_cave_username")) {
-            maven {
-                url = "https://maven.fildand.cz/releases"
-                credentials {
-                    username = "${project.nyarepo_publishing_cave_username}"
-                    password = "${project.nyarepo_publishing_cave_password}"
-                }
-            }
-        }
-    }
-
-    publications {
-        create("mavenJava", MavenPublication) {
-            //noinspection GrUnresolvedAccess
-            artifactId = base.archivesName.get()
-            //noinspection GrUnresolvedAccess, GroovyAssignabilityCheck
-            from components.java
-        }
     }
 }

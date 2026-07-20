@@ -27,10 +27,13 @@ public class VanillaArrowProperties implements ArrowProperties {
                     1.0F / (random.nextFloat() * 0.4F + 1.2F) + speed * 0.5F);
             consumeItem(heldStack, user, duration, random);
             if (!user.world.isRemote) {
-                user.world.spawnEntity(ItemBowImpl.createArrow(
+                user.world.spawnEntity(
+                    ItemBowImpl.createArrow(
                         user.world, user,
                         speed * 2,
-                        speed >= 1.0F));
+                        speed >= 1.0F
+                    )
+                );
             }
             return true;
         }

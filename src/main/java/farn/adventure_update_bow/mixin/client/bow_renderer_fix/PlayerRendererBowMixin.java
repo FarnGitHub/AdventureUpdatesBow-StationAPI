@@ -2,8 +2,8 @@ package farn.adventure_update_bow.mixin.client.bow_renderer_fix;
 
 import com.llamalad7.mixinextras.sugar.Local;
 import farn.adventure_update_bow.AdventureUpdateBow;
-import farn.adventure_update_bow.compat.unitweaks.UniTweakCompat;
 import farn.adventure_update_bow.impl.item.ItemBowImpl;
+import net.danygames2014.unitweaks.UniTweaks;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -35,7 +35,7 @@ public class PlayerRendererBowMixin {
             )}
     )
     public void changeBowRendering(PlayerEntity entity, float f, CallbackInfo ci, @Local(type = ItemStack.class, ordinal = 1) ItemStack heldStack) {
-        if (!AdventureUpdateBow.uniTweak || !UniTweakCompat.isUniTweakBowFix()) {
+        if (!AdventureUpdateBow.uniTweak || !UniTweaks.BUGFIXES_CONFIG.bowHeldFix) {
             if (entity.farnutil_hasActionId(ItemBowImpl.getActionId()) && !entity.farnutil_isUsingItem()) {
                  GL11.glTranslatef(0.0F, -0.5F, 0.0F);
             }

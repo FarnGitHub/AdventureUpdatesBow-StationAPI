@@ -1,10 +1,8 @@
 package farn.adventure_update_bow.api;
 
-import farn.adventure_update_bow.AdventureUpdateBow;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.modificationstation.stationapi.api.StationAPI;
 
 import java.util.Random;
 

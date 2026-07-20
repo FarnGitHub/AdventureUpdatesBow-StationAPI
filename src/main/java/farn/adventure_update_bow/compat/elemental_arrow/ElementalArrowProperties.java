@@ -16,12 +16,12 @@ public class ElementalArrowProperties implements ArrowProperties {
 
     @Override
     public boolean canUse(ItemStack heldStack, PlayerEntity user) {
-        return getElementalArrowItem(user) != null;
+        return getElementalArrow(user) != null;
     }
 
     @Override
     public boolean onUse(ItemStack heldStack, PlayerEntity user, int duration, Random random) {
-        ElementalArrowItem arrow = getElementalArrowItem(user);
+        ElementalArrowItem arrow = getElementalArrow(user);
         if(arrow != null) {
             float speed = (ItemBowImpl.getMaxDuration() - duration) / 20.0F;
             speed = (speed * speed + speed * 2.0F) / 3.0F;
@@ -42,7 +42,7 @@ public class ElementalArrowProperties implements ArrowProperties {
         return false;
     }
 
-    private ElementalArrowItem getElementalArrowItem(PlayerEntity user) {
+    private ElementalArrowItem getElementalArrow(PlayerEntity user) {
         for(ItemStack invStack : user.inventory.main)
             if(invStack != null && invStack.getItem() instanceof ElementalArrowItem arrow)
                 return arrow;
